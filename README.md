@@ -5,7 +5,9 @@
 
  [![Support me on Patreon][badge_patreon]][patreon] [![Buy me a book][badge_amazon]][amazon] [![PayPal][badge_paypal_donate]][paypal-donations] [![Ask me anything](https://img.shields.io/badge/ask%20me-anything-1abc9c.svg)](https://github.com/IonicaBizau/ama) [![Version](https://img.shields.io/npm/v/coins-ph.svg)](https://www.npmjs.com/package/coins-ph) [![Downloads](https://img.shields.io/npm/dt/coins-ph.svg)](https://www.npmjs.com/package/coins-ph)
 
-> Coins.ph API wrapper for Node.js
+> Coins.ph API wrapper for Node.js (Using promises instead of callbacks).
+
+This is based on [Ionică Bizău]'s work on coins-ph. This API wrapper uses Promises instead of callbacks.
 
 The [Coins.ph API Reference](https://coins.readme.io/v2.1/docs) is a good resource to learn more about these APIs.
 
@@ -13,10 +15,10 @@ The [Coins.ph API Reference](https://coins.readme.io/v2.1/docs) is a good resour
 
 ```sh
 # Using npm
-npm install --save coins-ph
+npm install --save coins-ph-promise
 
 # Using yarn
-yarn add coins-ph
+yarn add coins-ph-promise
 ```
 
 
@@ -25,7 +27,7 @@ yarn add coins-ph
 
 
 ```js
-const Coins = require("coins-ph");
+const Coins = require("coins-ph-promise");
 
 let client = new Coins({
     key: process.env.COINS_PW_KEY
@@ -35,8 +37,9 @@ let client = new Coins({
   , host: process.env.COINS_HOST || "https://coins.ph/"
 });
 
-client.cryptoAccounts({}, (err, data) => {
-    console.log(err || data);
+client.cryptoAccounts({})
+   .then((data) => {
+    console.log(data);
     // =>
     // [ { id: 'ff...c9',
     //     name: 'Default Account',
@@ -52,7 +55,10 @@ client.cryptoAccounts({}, (err, data) => {
     //     pending_balance: '0.00000000',
     //     total_received: '0.00000000',
     //     default_address: 'bf...129' } ]
-});
+   })
+   .catch((err) => {
+     console.log(err);
+   });
 
 client.payinOutlets({ region: "PH" }, (err, data) => {
     console.log(err || data);
@@ -319,6 +325,7 @@ Thanks! :heart:
 ## :scroll: License
 
 [MIT][license] © [Ionică Bizău][website]
+Converted to promise by [Ardee Aram][https://steemit.com/@ardeearam]
 
 [badge_patreon]: http://ionicabizau.github.io/badges/patreon.svg
 [badge_amazon]: http://ionicabizau.github.io/badges/amazon.svg
