@@ -15,10 +15,10 @@ The [Coins.ph API Reference](https://coins.readme.io/v2.1/docs) is a good resour
 
 ```sh
 # Using npm
-npm install --save coins-ph-promise
+npm install --save coins-ph-promise-native
 
 # Using yarn
-yarn add coins-ph-promise
+yarn add coins-ph-promise-native
 ```
 
 
@@ -27,7 +27,7 @@ yarn add coins-ph-promise
 
 
 ```js
-const Coins = require("coins-ph-promise");
+const Coins = require("coins-ph-promise-native");
 
 let client = new Coins({
     key: process.env.COINS_PW_KEY
