@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/IonicaBizau/coins-ph#readme",
   "dependencies": {
-    "request": "^2.69.0"
+    "request": "^2.69.0",
+    "request-promise-native": "^1.0.5"
   },
   "blah": {
     "description": "The [Coins.ph API Reference](https://coins.readme.io/v2.1/docs) is a good resource to learn more about these APIs."
