@@ -57,6 +57,12 @@ co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
 
+coins-ph-promise@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/coins-ph-promise/-/coins-ph-promise-1.0.0.tgz#8c04898a0c0482060bad1108e1fd3c3c4237119c"
+  dependencies:
+    request "^2.69.0"
+
 combined-stream@1.0.6, combined-stream@~1.0.5:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/combined-stream/-/combined-stream-1.0.6.tgz#723e7df6e801ac5613113a7e445a9b69cb632818"
