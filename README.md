@@ -37,9 +37,8 @@ let client = new Coins({
   , host: process.env.COINS_HOST || "https://coins.ph/"
 });
 
-client.cryptoAccounts({})
-   .then((data) => {
-    console.log(data);
+client.cryptoAccounts({}).then((data) => console.log(data))
+.catch((err) => console.log(err));
     // =>
     // [ { id: 'ff...c9',
     //     name: 'Default Account',
@@ -55,13 +54,9 @@ client.cryptoAccounts({})
     //     pending_balance: '0.00000000',
     //     total_received: '0.00000000',
     //     default_address: 'bf...129' } ]
-   })
-   .catch((err) => {
-     console.log(err);
-   });
 
-client.payinOutlets({ region: "PH" }, (err, data) => {
-    console.log(err || data);
+client.payinOutlets({ region: "PH" }).then((data) => console.log(data))
+.catch((err) => console.log(err));
     // =>
     // [ { id: '..._deposit',
     //     outlet_category: 'atm_deposit',
@@ -105,163 +100,142 @@ Creates the instance of the `Coins` class.
  - `key` (String): The API key (mandatory)
  - `host` (String): The `coins.ph` host (default: `https://coins.ph/`).
 
-### `createBuyorder(data, cb)`
+### `createBuyorder(data)`
 Create a new buyorder
 
 #### Params
 
 - **Object** `data`: The order data as documented [here](https://coins.readme.io/docs/testinput).
-- **Function** `cb`: The callback function.
 
-### `markBuyorderPaid(data, cb)`
+### `markBuyorderPaid(data)`
 Mark a buy order as paid
 
 #### Params
 
 - **Object** `data`: The order data as documented [here](https://coins.readme.io/docs/buyorder-1).
-- **Function** `cb`: The callback function.
 
-### `buyorder(data, cb)`
+### `buyorder(data)`
 Retrieve an existing buyorder
 
 #### Params
 
 - **Object** `data`: The order data as documented [here](https://coins.readme.io/docs/buyorder).
-- **Function** `cb`: The callback function.
 
-### `createSellorder(data, cb)`
+### `createSellorder(data)`
 Create a new sellorder
 
 #### Params
 
 - **Object** `data`: The sell order data (documented [here](https://coins.readme.io/docs/sellorder)).
-- **Function** `cb`: The callback function.
 
-### `validateField(data, cb)`
+### `validateField(data)`
 Validate field values
 
 #### Params
 
 - **Object** `data`: The post data (documented [here](https://coins.readme.io/docs/validate-field)).
-- **Function** `cb`: The callback function.
 
-### `sellorder(params, cb)`
+### `sellorder(params)`
 Retrieve an existing sellorder
 
 #### Params
 
 - **Object** `params`: The sell order params (documented [here](https://coins.readme.io/docs/sellorder-1)).
-- **Function** `cb`: The callback function.
 
-### `transactionHistory(cb)`
+### `transactionHistory()`
 Gets the transaction history (buyorders).
 
 #### Params
 
-- **Function** `cb`: The callback function.
-
-### `payinOutlets(params, cb)`
+### `payinOutlets(params)`
 Retrieve supported payin-outlets
 
 #### Params
 
 - **Object** `params`: The request params (documented [here](https://coins.readme.io/docs/payin-outlets)).
-- **Function** `cb`: The callback function.
 
-### `payinOutletFees(params, cb)`
+### `payinOutletFees(params)`
 Retrieve current payin-outlet-fees
 
 #### Params
 
 - **Object** `params`: The request params (documented [here](https://coins.readme.io/docs/payin-outlet-fees)).
-- **Function** `cb`: The callback function.
 
-### `payinOutletCategories(params, cb)`
+### `payinOutletCategories(params)`
 Retrieve supported payin-outlet-categories
 
 #### Params
 
 - **Object** `params`: The request params (documented [here](https://coins.readme.io/docs/payin-outlet-categories)).
-- **Function** `cb`: The callback function.
 
-### `createPaymentRequest(data, cb)`
+### `createPaymentRequest(data)`
 Create a new payment request
 
 #### Params
 
 - **Object** `data`: The request data (documented [here](https://coins.readme.io/docs/payment-requests)).
-- **Function** `cb`: The callback function.
 
-### `paymentRequests(params, cb)`
+### `paymentRequests(params)`
 Retrieve an existing or a list of existing payment requests
 
 #### Params
 
 - **Object** `params`: The request params (documented [here](https://coins.readme.io/docs/payment-requests-1)).
-- **Function** `cb`: The callback function.
 
-### `createTransferRequest(data, cb)`
+### `createTransferRequest(data)`
 Transfer funds between two accounts
 
 #### Params
 
 - **Object** `data`: The request data (documented [here](https://coins.readme.io/docs/transfers)).
-- **Function** `cb`: The callback function.
 
-### `transfers(params, cb)`
+### `transfers(params)`
 Get the list of transfers or a specific one.
 
 #### Params
 
 - **Object** `params`: The params object (documented [here](https://coins.readme.io/docs/transfers-1)).
-- **Function** `cb`: The callback function.
 
-### `cryptoAccounts(params, cb)`
+### `cryptoAccounts(params)`
 Retrieve existing crypto-accounts
 
 #### Params
 
 - **Object** `params`: The params object (documented [here](https://coins.readme.io/docs/crypto-accounts)).
-- **Function** `cb`: The callback function.
 
-### `convertFunds(data, cb)`
+### `convertFunds(data)`
 Convert funds between a user's accounts
 
 #### Params
 
 - **Object** `data`: The data object (documented [here](https://coins.readme.io/docs/crypto-exchanges)).
-- **Function** `cb`: The callback function.
 
-### `cryptoExchanges(params, cb)`
+### `cryptoExchanges(params)`
 Retrieve current crypto-exchanges
 
 #### Params
 
 - **Object** `params`: The request params (documented [here](https://coins.readme.io/docs/crypto-exchanges)).
-- **Function** `cb`: The callback function.
 
-### `cryptoRoutes(cb)`
+### `cryptoRoutes()`
 Retrieve existing crypto-routes
 
 #### Params
 
-- **Function** `cb`: The callback function.
 
-### `cryptoPayments(params, cb)`
+### `cryptoPayments(params)`
 Get the crypto payments or a specific one.
 
 #### Params
 
 - **Object** `params`: The request params (documented [here](https://coins.readme.io/docs/crypto-payments)).
-- **Function** `cb`: The callback function.
 
-### `createUser(data, cb)`
+### `createUser(data)`
 Create a new user
 
 #### Params
 
 - **Object** `data`: The request data (documented [here](https://coins.readme.io/docs/user)).
-- **Function** `cb`: The callback function.
 
 ### `_getNonce()`
 This is called internally.
@@ -282,7 +256,7 @@ Signs a request.
  - `signature` (String): The HMAC signature.
  - `nonce` (String): The stringified nonce value.
 
-### `_request(options, cb)`
+### `_request(options)`
 Low level function for making requests to the API endpoints.
 
 #### Params
@@ -295,30 +269,10 @@ Low level function for making requests to the API endpoints.
  - `responseField` (String): The response field to take.
  - `version` (String): The version endpoint (default: `d/api`). It
     could be `api/v2` or `api/v3` too, depending on the endpoint.
-- **Function** `cb`: The callback function.
-
 
 
 ## :yum: How to contribute
 Have an idea? Found a bug? See [how to contribute][contributing].
-
-
-## :sparkling_heart: Support my projects
-
-I open-source almost everything I can, and I try to reply everyone needing help using these projects. Obviously,
-this takes time. You can integrate and use these projects in your applications *for free*! You can even change the source code and redistribute (even resell it).
-
-However, if you get some profit from this or just want to encourage me to continue creating stuff, there are few ways you can do it:
-
- - Starring and sharing the projects you like :rocket:
- - [![Buy me a book][badge_amazon]][amazon]—I love books! I will remember you after years if you buy me one. :grin: :book:
- - [![PayPal][badge_paypal]][paypal-donations]—You can make one-time donations via PayPal. I'll probably buy a ~~coffee~~ tea. :tea:
- - [![Support me on Patreon][badge_patreon]][patreon]—Set up a recurring monthly donation and you will get interesting news about what I'm doing (things that I don't share with everyone).
- - **Bitcoin**—You can send me bitcoins at this address (or scanning the code below): `1P9BRsmazNQcuyTxEqveUsnf5CERdq35V6`
-
-    ![](https://i.imgur.com/z6OQI95.png)
-
-Thanks! :heart:
 
 
 
